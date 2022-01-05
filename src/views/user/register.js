@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import {
   Row,
@@ -17,7 +18,7 @@ import IntlMessages from 'helpers/IntlMessages';
 import { Colxx } from 'components/common/CustomBootstrap';
 import { adminRoot } from 'constants/defaultValues';
 import { useMutation } from 'react-query';
-import { UPDATE_MANAGER } from 'queries';
+import { REGISTER } from 'queries';
 
 const Register = ({ history }) => {
   const [email, setEmail] = useState();
@@ -31,7 +32,7 @@ const Register = ({ history }) => {
     // call registerUserAction()
   };
 
-  const { mutate: register } = useMutation(UPDATE_MANAGER);
+  const { mutate: register } = useMutation(REGISTER);
   const handleRegister = async () => {
     await register(
       { email, password, name },
