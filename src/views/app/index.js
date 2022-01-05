@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import AppLayout from 'layout/AppLayout';
 import Product from 'views/product';
+import { getLocalStorageValues } from '../../constants';
 // import { ProtectedRoute, UserRole } from 'helpers/authHelper';
 
 const Dashboards = React.lazy(() =>
@@ -15,6 +15,7 @@ const Pages = React.lazy(() =>
 const Applications = React.lazy(() =>
   import(/* webpackChunkName: "applications" */ './applications')
 );
+
 const Ui = React.lazy(() => import(/* webpackChunkName: "ui" */ './ui'));
 const Menu = React.lazy(() => import(/* webpackChunkName: "menu" */ './menu'));
 const BlankPage = React.lazy(() =>
@@ -22,6 +23,11 @@ const BlankPage = React.lazy(() =>
 );
 
 const App = () => {
+  // eslint-disable-next-line prefer-const
+  let { User } = getLocalStorageValues();
+  if (!User.email) {
+    return <Redirect from="*" to="/user/login" />;
+  }
   return (
     <AppLayout>
       <div className="dashboard-wrapper">

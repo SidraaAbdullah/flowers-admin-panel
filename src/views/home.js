@@ -8,6 +8,7 @@ import Headroom from 'react-headroom';
 import GlideComponent from 'components/carousel/GlideComponent';
 import { buyUrl, adminRoot } from 'constants/defaultValues';
 
+
 const slideSettings = {
   type: 'carousel',
   gap: 30,
@@ -184,6 +185,7 @@ const Home = () => {
   const refSectionHome = useRef(null);
   const refSectionFooter = useRef(null);
   const [activeTab, setActiveTab] = useState(0);
+
 
   const onWindowResize = (event) => {
     const homeRect = refRowHome.current.getBoundingClientRect();
