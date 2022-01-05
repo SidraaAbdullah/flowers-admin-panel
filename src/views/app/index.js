@@ -3,6 +3,7 @@ import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import AppLayout from 'layout/AppLayout';
+import Product from 'views/product';
 // import { ProtectedRoute, UserRole } from 'helpers/authHelper';
 
 const Dashboards = React.lazy(() =>
@@ -19,11 +20,7 @@ const Menu = React.lazy(() => import(/* webpackChunkName: "menu" */ './menu'));
 const BlankPage = React.lazy(() =>
   import(/* webpackChunkName: "blank-page" */ './blank-page')
 );
-const DataList = React.lazy(() =>
-  import(
-    /* webpackChunkName: "product-data-list" */ './pages/product/data-list'
-  )
-);
+
 const App = () => {
   return (
     <AppLayout>
@@ -46,7 +43,7 @@ const App = () => {
             /> */}
             <Route
               path="/products"
-              render={(props) => <DataList {...props} />}
+              render={(props) => <Product props={props} />}
             />
             <Route path="/pages" render={(props) => <Pages {...props} />} />
             <Route path="/ui" render={(props) => <Ui {...props} />} />
