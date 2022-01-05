@@ -71,7 +71,7 @@ const Register = ({ history }) => {
                 <Label>
                   <IntlMessages id="user.fullname" />
                 </Label>
-                <Input type="name" value={name} onChange={(e) => setName(e)} />
+                <Input type="name" value={name} onChange={(e) => setName(e.target.value)} />
               </FormGroup>
 
               <FormGroup className="form-group has-float-label  mb-4">
@@ -81,7 +81,7 @@ const Register = ({ history }) => {
                 <Input
                   type="email"
                   value={name}
-                  onChange={(e) => setEmail(e)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </FormGroup>
 
@@ -90,7 +90,7 @@ const Register = ({ history }) => {
                   <IntlMessages
                     id="user.password"
                     value={name}
-                    onChange={(e) => setPassword(e)}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </Label>
                 <Input type="password" />
