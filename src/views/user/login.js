@@ -10,16 +10,13 @@ import {
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { LOGIN } from 'queries';
 import { adminRoot } from 'constants/defaultValues';
-
 import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { loginUser } from 'redux/actions';
 import { useMutation } from 'react-query';
 
-// eslint-disable-next-line no-unused-vars
 const Login = ({ history }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -28,8 +25,9 @@ const Login = ({ history }) => {
     await login(
       { email, password },
       {
-        onSuccess: () => {
+        onSuccess: (res) => {
           history.push(adminRoot);
+          localStorage.setItem('User', JSON.stringify(res.data));
         },
         onError: () => {
           alert('Username or password is wrong!');
@@ -111,6 +109,7 @@ const Login = ({ history }) => {
     </Row>
   );
 };
+
 const mapStateToProps = ({ authUser }) => {
   const { loading, error } = authUser;
   return { loading, error };

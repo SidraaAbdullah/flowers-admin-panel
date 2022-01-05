@@ -25,13 +25,6 @@ const Register = ({ history }) => {
   const [password, setPassword] = useState();
   const [name, setName] = useState();
 
-  // const onUserRegister = () => {
-  //   if (email !== '' && password !== '') {
-  //     history.push(adminRoot);
-  //   }
-  //   // call registerUserAction()
-  // };
-
   const { mutate: register } = useMutation(REGISTER);
   const handleRegister = async () => {
     await register(
