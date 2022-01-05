@@ -25,12 +25,12 @@ const Register = ({ history }) => {
   const [password, setPassword] = useState();
   const [name, setName] = useState();
 
-  const onUserRegister = () => {
-    if (email !== '' && password !== '') {
-      history.push(adminRoot);
-    }
-    // call registerUserAction()
-  };
+  // const onUserRegister = () => {
+  //   if (email !== '' && password !== '') {
+  //     history.push(adminRoot);
+  //   }
+  //   // call registerUserAction()
+  // };
 
   const { mutate: register } = useMutation(REGISTER);
   const handleRegister = async () => {
@@ -38,7 +38,7 @@ const Register = ({ history }) => {
       { email, password, name },
       {
         onSuccess: () => {
-          history.push(adminRoot);
+          history.push('/user/login');
         },
       }
     );
