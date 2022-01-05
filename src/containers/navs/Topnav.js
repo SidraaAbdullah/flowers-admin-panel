@@ -46,7 +46,6 @@ const TopNav = ({
   locale,
   setContainerClassnamesAction,
   clickOnMobileMenuAction,
-  logoutUserAction,
   changeLocaleAction,
 }) => {
   const [isInFullScreen, setIsInFullScreen] = useState(false);
@@ -176,7 +175,8 @@ const TopNav = ({
   };
 
   const handleLogout = () => {
-    logoutUserAction(history);
+    localStorage.removeItem('User');
+    history.push('/user/login');
   };
 
   const menuButtonClick = (e, _clickCount, _conClassnames) => {

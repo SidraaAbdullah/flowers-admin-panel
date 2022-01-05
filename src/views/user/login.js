@@ -8,7 +8,7 @@ import {
   Button,
   Input,
 } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LOGIN } from 'queries';
 import { adminRoot } from 'constants/defaultValues';
@@ -16,10 +16,13 @@ import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { loginUser } from 'redux/actions';
 import { useMutation } from 'react-query';
+import { getLocalStorageValues } from '../../constants';
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  // eslint-disable-next-line prefer-const
+  let { User } = getLocalStorageValues();
   const { mutate: login, isLoading: loginLoading } = useMutation(LOGIN);
   const handleLogin = async () => {
     await login(
@@ -36,6 +39,9 @@ const Login = ({ history }) => {
     );
   };
 
+  if (User.email) {
+    return <Redirect from="*" to="/dashboards/default" />;
+  }
   return (
     <Row className="h-100">
       <Colxx xxs="12" md="10" className="mx-auto my-auto">

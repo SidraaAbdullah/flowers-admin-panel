@@ -19,7 +19,11 @@ import {
 } from './constants/defaultValues';
 import { getDirection } from './helpers/Utils';
 import { ProtectedRoute } from './helpers/authHelper';
-import { defaultQueryFn, defaultMutationFn, reactQueryConfig } from './constants';
+import {
+  defaultQueryFn,
+  defaultMutationFn,
+  reactQueryConfig,
+} from './constants';
 
 // const ViewHome = React.lazy(() =>
 //   import(/* webpackChunkName: "views" */ './views/home')
@@ -39,7 +43,7 @@ const ViewUnauthorized = React.lazy(() =>
 
 const App = ({ locale }) => {
   const direction = getDirection();
-
+  // eslint-disable-next-line prefer-const
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
