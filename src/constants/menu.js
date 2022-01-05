@@ -7,32 +7,32 @@ const data = [
     label: 'Product',
     to: `${adminRoot}/dashboards`,
     // roles: [UserRole.Admin, UserRole.Editor],
-    // subs: [
-    //   {
-    //     icon: 'simple-icon-briefcase',
-    //     label: 'Products',
-    //     to: `/products`,
-    //     // roles: [UserRole.Admin],
-    //   },
-    //   // {
-    //   //   icon: 'simple-icon-pie-chart',
-    //   //   label: 'menu.analytics',
-    //   //   to: `${adminRoot}/dashboards/analytics`,
-    //   //   // roles: [UserRole.Admin],
-    //   // },
-    //   // {
-    //   //   icon: 'simple-icon-basket-loaded',
-    //   //   label: 'menu.ecommerce',
-    //   //   to: `${adminRoot}/dashboards/ecommerce`,
-    //   //   // roles: [UserRole.Editor],
-    //   // },
-    //   // {
-    //   //   icon: 'simple-icon-doc',
-    //   //   label: 'menu.content',
-    //   //   to: `${adminRoot}/dashboards/content`,
-    //   //   // roles: [UserRole.Editor],
-    //   // },
-    // ],
+    subs: [
+      {
+        icon: 'simple-icon-briefcase',
+        label: 'Products',
+        to: `/products`,
+        //     // roles: [UserRole.Admin],
+      },
+      //   // {
+      //   //   icon: 'simple-icon-pie-chart',
+      //   //   label: 'menu.analytics',
+      //   //   to: `${adminRoot}/dashboards/analytics`,
+      //   //   // roles: [UserRole.Admin],
+      //   // },
+      //   // {
+      //   //   icon: 'simple-icon-basket-loaded',
+      //   //   label: 'menu.ecommerce',
+      //   //   to: `${adminRoot}/dashboards/ecommerce`,
+      //   //   // roles: [UserRole.Editor],
+      //   // },
+      //   // {
+      //   //   icon: 'simple-icon-doc',
+      //   //   label: 'menu.content',
+      //   //   to: `${adminRoot}/dashboards/content`,
+      //   //   // roles: [UserRole.Editor],
+      //   // },
+    ],
   },
   // {
   //   id: 'pages',
