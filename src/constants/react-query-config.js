@@ -1,5 +1,5 @@
-import { BASE_URL } from 'constants/index';
 import axios from 'axios';
+import { BASE_URL } from './env';
 
 export const reactQueryConfig = {
   refetchOnWindowFocus: false,

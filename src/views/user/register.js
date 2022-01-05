@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import {
   Row,
@@ -16,17 +17,31 @@ import { registerUser } from 'redux/actions';
 import IntlMessages from 'helpers/IntlMessages';
 import { Colxx } from 'components/common/CustomBootstrap';
 import { adminRoot } from 'constants/defaultValues';
+import { useMutation } from 'react-query';
+import { REGISTER } from 'queries';
 
 const Register = ({ history }) => {
-  const [email] = useState('demo@gogo.com');
-  const [password] = useState('gogo123');
-  const [name] = useState('Sarah Kortney');
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [name, setName] = useState();
 
   const onUserRegister = () => {
     if (email !== '' && password !== '') {
       history.push(adminRoot);
     }
     // call registerUserAction()
+  };
+
+  const { mutate: register } = useMutation(REGISTER);
+  const handleRegister = async () => {
+    await register(
+      { email, password, name },
+      {
+        onSuccess: () => {
+          history.push(adminRoot);
+        },
+      }
+    );
   };
 
   return (
@@ -56,19 +71,27 @@ const Register = ({ history }) => {
                 <Label>
                   <IntlMessages id="user.fullname" />
                 </Label>
-                <Input type="name" defaultValue={name} />
+                <Input type="name" value={name} onChange={(e) => setName(e)} />
               </FormGroup>
 
               <FormGroup className="form-group has-float-label  mb-4">
                 <Label>
                   <IntlMessages id="user.email" />
                 </Label>
-                <Input type="email" defaultValue={email} />
+                <Input
+                  type="email"
+                  value={name}
+                  onChange={(e) => setEmail(e)}
+                />
               </FormGroup>
 
               <FormGroup className="form-group has-float-label  mb-4">
                 <Label>
-                  <IntlMessages id="user.password" defaultValue={password} />
+                  <IntlMessages
+                    id="user.password"
+                    value={name}
+                    onChange={(e) => setPassword(e)}
+                  />
                 </Label>
                 <Input type="password" />
               </FormGroup>
@@ -78,7 +101,7 @@ const Register = ({ history }) => {
                   color="primary"
                   className="btn-shadow"
                   size="lg"
-                  onClick={() => onUserRegister()}
+                  onClick={handleRegister}
                 >
                   <IntlMessages id="user.register-button" />
                 </Button>
