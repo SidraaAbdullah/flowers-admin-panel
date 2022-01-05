@@ -1,5 +1,6 @@
 import React, { Suspense, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import {
   BrowserRouter as Router,
   Route,
@@ -18,6 +19,11 @@ import {
 } from './constants/defaultValues';
 import { getDirection } from './helpers/Utils';
 import { ProtectedRoute } from './helpers/authHelper';
+import {
+  defaultQueryFn,
+  defaultMutationFn,
+  reactQueryConfig,
+} from './constants';
 
 // const ViewHome = React.lazy(() =>
 //   import(/* webpackChunkName: "views" */ './views/home')
@@ -37,6 +43,19 @@ const ViewUnauthorized = React.lazy(() =>
 
 const App = ({ locale }) => {
   const direction = getDirection();
+
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        queryFn: defaultQueryFn,
+        ...reactQueryConfig,
+      },
+      mutations: {
+        mutationFn: defaultMutationFn,
+      },
+    },
+  });
+
   const currentAppLocale = AppLocale[locale];
   useEffect(() => {
     if (direction.isRtl) {
@@ -49,51 +68,53 @@ const App = ({ locale }) => {
   }, [direction]);
 
   return (
-    <div className="h-100">
-      <IntlProvider
-        locale={currentAppLocale.locale}
-        messages={currentAppLocale.messages}
-      >
-        <>
-          <NotificationContainer />
-          {isMultiColorActive && <ColorSwitcher />}
-          <Suspense fallback={<div className="loading" />}>
-            <Router>
-              <Switch>
-                <Route
-                  path="/user"
-                  render={(props) => <ViewUser {...props} />}
-                />
-                <Route
-                  path="/error"
-                  exact
-                  render={(props) => <ViewError {...props} />}
-                />
-                <Route
-                  path="/unauthorized"
-                  exact
-                  render={(props) => <ViewUnauthorized {...props} />}
-                />
-                <ProtectedRoute
-                  path={adminRoot}
-                  component={ViewApp}
-                  roles={[UserRole.Admin, UserRole.Editor]}
-                />
-                {/* <Route
+    <QueryClientProvider client={queryClient}>
+      <div className="h-100">
+        <IntlProvider
+          locale={currentAppLocale.locale}
+          messages={currentAppLocale.messages}
+        >
+          <>
+            <NotificationContainer />
+            {isMultiColorActive && <ColorSwitcher />}
+            <Suspense fallback={<div className="loading" />}>
+              <Router>
+                <Switch>
+                  <Route
+                    path="/user"
+                    render={(props) => <ViewUser {...props} />}
+                  />
+                  <Route
+                    path="/error"
+                    exact
+                    render={(props) => <ViewError {...props} />}
+                  />
+                  <Route
+                    path="/unauthorized"
+                    exact
+                    render={(props) => <ViewUnauthorized {...props} />}
+                  />
+                  <ProtectedRoute
+                    path={adminRoot}
+                    component={ViewApp}
+                    roles={[UserRole.Admin, UserRole.Editor]}
+                  />
+                  {/* <Route
                   path="/"
                   exact
                   render={(props) => <ViewHome {...props} />}
                 /> */}
 
-                <Redirect exact from="/" to={adminRoot} />
+                  <Redirect exact from="/" to={adminRoot} />
 
-                <Redirect to="/error" />
-              </Switch>
-            </Router>
-          </Suspense>
-        </>
-      </IntlProvider>
-    </div>
+                  <Redirect to="/error" />
+                </Switch>
+              </Router>
+            </Suspense>
+          </>
+        </IntlProvider>
+      </div>
+    </QueryClientProvider>
   );
 };
 
