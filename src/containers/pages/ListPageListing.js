@@ -27,9 +27,9 @@ const ListPageListing = ({
         if (displayMode === 'imagelist') {
           return (
             <ImageListView
-              key={product.id}
+              key={product._id}
               product={product}
-              isSelect={selectedItems.includes(product.id)}
+              isSelect={selectedItems.includes(product._id)}
               collect={collect}
               onCheckItem={onCheckItem}
             />
@@ -38,9 +38,9 @@ const ListPageListing = ({
         if (displayMode === 'thumblist') {
           return (
             <ThumbListView
-              key={product.id}
+              key={product._id}
               product={product}
-              isSelect={selectedItems.includes(product.id)}
+              isSelect={selectedItems.includes(product._id)}
               collect={collect}
               onCheckItem={onCheckItem}
             />
@@ -48,9 +48,9 @@ const ListPageListing = ({
         }
         return (
           <DataListView
-            key={product.id}
+            key={product.__id}
             product={product}
-            isSelect={selectedItems.includes(product.id)}
+            isSelect={selectedItems.includes(product._id)}
             onCheckItem={onCheckItem}
             collect={collect}
           />

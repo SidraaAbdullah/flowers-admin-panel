@@ -8,9 +8,9 @@ import { Colxx } from 'components/common/CustomBootstrap';
 const DataListView = ({ product, isSelect, collect, onCheckItem }) => {
   return (
     <Colxx xxs="12" className="mb-3">
-      <ContextMenuTrigger id="menu_id" data={product.id} collect={collect}>
+      <ContextMenuTrigger id="menu_id" data={product._id} collect={collect}>
         <Card
-          onClick={(event) => onCheckItem(event, product.id)}
+          onClick={(event) => onCheckItem(event, product._id)}
           className={classnames('d-flex flex-row', {
             active: isSelect,
           })}
@@ -19,14 +19,14 @@ const DataListView = ({ product, isSelect, collect, onCheckItem }) => {
             <div className="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
               <NavLink to={`?p=${product.id}`} className="w-40 w-sm-100">
                 <p className="list-item-heading mb-1 truncate">
-                  {product.title}
+                  {product.name}
                 </p>
               </NavLink>
               <p className="mb-1 text-muted text-small w-15 w-sm-100">
-                {product.category}
+                {product.category_id?.name}
               </p>
               <p className="mb-1 text-muted text-small w-15 w-sm-100">
-                {product.date}
+                {product.createdAt}
               </p>
               <div className="w-15 w-sm-100">
                 <Badge color={product.statusColor} pill>
@@ -38,7 +38,7 @@ const DataListView = ({ product, isSelect, collect, onCheckItem }) => {
               <CustomInput
                 className="item-check mb-0"
                 type="checkbox"
-                id={`check_${product.id}`}
+                id={`check_${product._id}`}
                 checked={isSelect}
                 onChange={() => {}}
                 label=""

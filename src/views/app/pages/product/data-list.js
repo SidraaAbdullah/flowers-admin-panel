@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 
 import axios from 'axios';
@@ -8,6 +9,7 @@ import ListPageHeading from 'containers/pages/ListPageHeading';
 import AddNewModal from 'containers/pages/AddNewModal';
 import ListPageListing from 'containers/pages/ListPageListing';
 import useMousetrap from 'hooks/use-mousetrap';
+import { useQuery } from 'react-query';
 
 const getIndex = (value, arr, prop) => {
   for (let i = 0; i < arr.length; i += 1) {
@@ -21,7 +23,7 @@ const getIndex = (value, arr, prop) => {
 const apiUrl = `${servicePath}/cakes/paging`;
 
 const orderOptions = [
-  { column: 'title', label: 'Product Name' },
+  { column: 'name', label: 'Product Name' },
   { column: 'category', label: 'Category' },
   { column: 'status', label: 'Status' },
 ];
@@ -34,7 +36,7 @@ const categories = [
 ];
 
 const DataListPages = ({ match }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
   const [displayMode, setDisplayMode] = useState('list');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedPageSize, setSelectedPageSize] = useState(8);
@@ -55,29 +57,39 @@ const DataListPages = ({ match }) => {
     setCurrentPage(1);
   }, [selectedPageSize, selectedOrderOption]);
 
-  useEffect(() => {
-    async function fetchData() {
-      axios
-        .get(
-          `${apiUrl}?pageSize=${selectedPageSize}&currentPage=${currentPage}&orderBy=${selectedOrderOption.column}&search=${search}`
-        )
-        .then((res) => {
-          return res.data;
-        })
-        .then((data) => {
-          setTotalPage(data.totalPage);
-          setItems(
-            data.data.map((x) => {
-              return { ...x, img: x.img.replace('img/', 'img/products/') };
-            })
-          );
-          setSelectedItems([]);
-          setTotalItemCount(data.totalItem);
-          setIsLoaded(true);
-        });
-    }
-    fetchData();
-  }, [selectedPageSize, currentPage, selectedOrderOption, search]);
+  const { refetch: refetchProducts } = useQuery('/product', {
+    refetchOnWindowFocus: true,
+    onSuccess({ data }) {
+      setTotalPage(data.length);
+      setItems(data);
+      setSelectedItems([]);
+      setTotalItemCount(data.length);
+      setIsLoaded(true);
+    },
+  });
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     axios
+  //       .get(
+  //         `${apiUrl}?pageSize=${selectedPageSize}&currentPage=${currentPage}&orderBy=${selectedOrderOption.column}&search=${search}`
+  //       )
+  //       .then((res) => {
+  //         return res.data;
+  //       })
+  //       .then((data) => {
+  //         setTotalPage(data.totalPage);
+  //         setItems(
+  //           data.data.map((x) => {
+  //             return { ...x, img: x.img.replace('img/', 'img/products/') };
+  //           })
+  //         );
+  //         setSelectedItems([]);
+  //         setTotalItemCount(data.totalItem);
+  //         setIsLoaded(true);
+  //       });
+  //   }
+  //   fetchData();
+  // }, [selectedPageSize, currentPage, selectedOrderOption, search]);
 
   const onCheckItem = (event, id) => {
     if (
@@ -190,6 +202,7 @@ const DataListPages = ({ match }) => {
           modalOpen={modalOpen}
           toggleModal={() => setModalOpen(!modalOpen)}
           categories={categories}
+          refetchProducts={refetchProducts}
         />
         <ListPageListing
           items={items}
@@ -201,6 +214,7 @@ const DataListPages = ({ match }) => {
           onContextMenuClick={onContextMenuClick}
           onContextMenu={onContextMenu}
           onChangePage={setCurrentPage}
+          refetchProducts={refetchProducts}
         />
       </div>
     </>

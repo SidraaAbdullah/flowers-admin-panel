@@ -16,6 +16,7 @@ import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { loginUser } from 'redux/actions';
 import { useMutation } from 'react-query';
+import axios from 'axios';
 import { getLocalStorageValues } from '../../constants';
 
 const Login = ({ history }) => {
@@ -30,6 +31,7 @@ const Login = ({ history }) => {
       {
         onSuccess: (res) => {
           history.push(adminRoot);
+          axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
           localStorage.setItem('User', JSON.stringify(res.data));
         },
         onError: () => {
@@ -52,10 +54,9 @@ const Login = ({ history }) => {
               Please use your credentials to login.
               <br />
               If you are not a member, please{' '}
-              <NavLink to="/user/register" className="white">
-                register
+              <NavLink to="/user/register" className="black red">
+                register.
               </NavLink>
-              .
             </p>
           </div>
           <div className="form-side">

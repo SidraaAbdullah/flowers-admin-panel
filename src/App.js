@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import './helpers/Firebase';
+import axios from 'axios';
 import AppLocale from './lang';
 import ColorSwitcher from './components/common/ColorSwitcher';
 import { NotificationContainer } from './components/common/react-notifications';
@@ -23,6 +24,7 @@ import {
   defaultQueryFn,
   defaultMutationFn,
   reactQueryConfig,
+  getLocalStorageValues,
 } from './constants';
 
 // const ViewHome = React.lazy(() =>
@@ -43,6 +45,8 @@ const ViewUnauthorized = React.lazy(() =>
 
 const App = ({ locale }) => {
   const direction = getDirection();
+  const { User } = getLocalStorageValues();
+  axios.defaults.headers.common.Authorization = `bearer ${User.access_token}`;
   // eslint-disable-next-line prefer-const
   const queryClient = new QueryClient({
     defaultOptions: {
