@@ -2,7 +2,40 @@ import { adminRoot } from './defaultValues';
 
 const data = [
   {
-    id: 'dashboards',
+    id: 'category',
+    icon: 'iconsminds-shop-4',
+    label: 'Category',
+    to: `${adminRoot}/dashboards`,
+    // roles: [UserRole.Admin, UserRole.Editor],
+    subs: [
+      {
+        icon: 'simple-icon-briefcase',
+        label: 'Categories',
+        to: `/categories`,
+        //     // roles: [UserRole.Admin],
+      },
+      //   // {
+      //   //   icon: 'simple-icon-pie-chart',
+      //   //   label: 'menu.analytics',
+      //   //   to: `${adminRoot}/dashboards/analytics`,
+      //   //   // roles: [UserRole.Admin],
+      //   // },
+      //   // {
+      //   //   icon: 'simple-icon-basket-loaded',
+      //   //   label: 'menu.ecommerce',
+      //   //   to: `${adminRoot}/dashboards/ecommerce`,
+      //   //   // roles: [UserRole.Editor],
+      //   // },
+      //   // {
+      //   //   icon: 'simple-icon-doc',
+      //   //   label: 'menu.content',
+      //   //   to: `${adminRoot}/dashboards/content`,
+      //   //   // roles: [UserRole.Editor],
+      //   // },
+    ],
+  },
+  {
+    id: 'product',
     icon: 'iconsminds-shop-4',
     label: 'Product',
     to: `${adminRoot}/dashboards`,
@@ -34,6 +67,7 @@ const data = [
       //   // },
     ],
   },
+
   // {
   //   id: 'pages',
   //   icon: 'iconsminds-digital-drawing',

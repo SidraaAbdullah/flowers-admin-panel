@@ -51,6 +51,10 @@ const App = () => {
               path="/products"
               render={(props) => <Product props={props} />}
             />
+            <Route
+              path="/categories"
+              render={(props) => <Product props={props} />}
+            />
             <Route path="/pages" render={(props) => <Pages {...props} />} />
             <Route path="/ui" render={(props) => <Ui {...props} />} />
             <Route path="/menu" render={(props) => <Menu {...props} />} />
