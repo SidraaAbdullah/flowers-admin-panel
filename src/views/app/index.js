@@ -3,6 +3,8 @@ import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AppLayout from 'layout/AppLayout';
 import Product from 'views/product';
+import Category from 'views/category';
+
 import { getLocalStorageValues } from '../../constants';
 // import { ProtectedRoute, UserRole } from 'helpers/authHelper';
 
@@ -53,7 +55,7 @@ const App = () => {
             />
             <Route
               path="/categories"
-              render={(props) => <Product props={props} />}
+              render={(props) => <Category props={props} />}
             />
             <Route path="/pages" render={(props) => <Pages {...props} />} />
             <Route path="/ui" render={(props) => <Ui {...props} />} />

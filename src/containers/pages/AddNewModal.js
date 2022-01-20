@@ -14,12 +14,18 @@ import Select from 'react-select';
 import CustomSelectInput from 'components/common/CustomSelectInput';
 import IntlMessages from 'helpers/IntlMessages';
 import { Formik } from 'formik';
-import { CREATE_PRODUCT } from 'queries/product';
 import { useMutation, useQuery } from 'react-query';
+import { getLocalStorageValues } from '../../constants';
 
-const AddNewModal = ({ modalOpen, toggleModal, refetchProducts }) => {
+const AddNewModal = ({
+  modalOpen,
+  toggleModal,
+  refetchData,
+  mutate,
+  pathname,
+}) => {
   const [image, setImage] = useState('');
-  const { mutate: createProduct } = useMutation(CREATE_PRODUCT);
+  const { mutate: createItem } = useMutation(mutate);
   const { data: apiCategories } = useQuery('/category');
   const categories = (apiCategories?.data || []).map((item) => ({
     label: item.name,
@@ -35,6 +41,7 @@ const AddNewModal = ({ modalOpen, toggleModal, refetchProducts }) => {
       reader.readAsDataURL(event.target.files[0]);
     }
   };
+  const { User } = getLocalStorageValues();
   return (
     <Modal
       isOpen={modalOpen}
@@ -49,15 +56,33 @@ const AddNewModal = ({ modalOpen, toggleModal, refetchProducts }) => {
           description: '',
         }}
         onSubmit={async (values) => {
-          const filtered = {
-            ...values,
-            category: undefined,
-            category_id: values.category?.value,
-            image,
-          };
-          createProduct(filtered);
-          await refetchProducts();
-          toggleModal();
+          if (pathname === 'product') {
+            const filtered = {
+              ...values,
+              category: undefined,
+              category_id: values.category?.value,
+              image,
+            };
+            createItem(filtered, {
+              onSuccess: async () => {
+                await refetchData();
+                toggleModal();
+              },
+            });
+          } else {
+            const category = {
+              name: values.name,
+              description: values.description,
+              image,
+              created_by: User._id,
+            };
+            createItem(category, {
+              onSuccess: async () => {
+                await refetchData();
+                toggleModal();
+              },
+            });
+          }
         }}
       >
         {({
