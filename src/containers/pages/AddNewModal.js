@@ -75,6 +75,7 @@ const AddNewModal = ({
               description: values.description,
               image,
               created_by: User._id,
+              price: values.price,
             };
             createItem(category, {
               onSuccess: async () => {
@@ -103,6 +104,15 @@ const AddNewModal = ({
               <Input
                 name="name"
                 value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <Label style={{ marginTop: 25 }}>
+                <IntlMessages id="pages.price" />
+              </Label>
+              <Input
+                name="price"
+                value={values.price}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -140,7 +150,7 @@ const AddNewModal = ({
                   <img src={image} alt="product" width="200" height="200" />
                 )}
               </div>
-              <Label className="mt-4">
+              {/* <Label className="mt-4">
                 <IntlMessages id="pages.status" />
               </Label>
               <CustomInput
@@ -156,7 +166,7 @@ const AddNewModal = ({
                 name="customButton"
                 label="PROCESSED"
                 onChange={(e) => setFieldValue('status', e.target.id)}
-              />
+              /> */}
             </ModalBody>
             <ModalFooter>
               <Button color="secondary" outline onClick={toggleModal}>
