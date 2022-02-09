@@ -213,6 +213,7 @@ module.exports = {
   'pages.description': 'Description',
   'pages.status': 'Status',
   'pages.cancel': 'Cancel',
+  'pages.image': 'Image',
   'pages.submit': 'Submit',
   'pages.delete': 'Delete',
   'pages.another-action': 'Another action',
