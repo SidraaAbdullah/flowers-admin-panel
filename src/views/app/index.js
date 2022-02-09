@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import AppLayout from 'layout/AppLayout';
 import Product from 'views/product';
 import Category from 'views/category';
+import OrderDetails from 'views/orderDetails';
+import RiderDetails from 'views/riderDetails';
 
 import { getLocalStorageValues } from '../../constants';
 // import { ProtectedRoute, UserRole } from 'helpers/authHelper';
@@ -57,6 +59,15 @@ const App = () => {
               path="/categories"
               render={(props) => <Category props={props} />}
             />
+             <Route
+              path="/order-details"
+              render={(props) => <OrderDetails props={props} />}
+            />
+             <Route
+              path="/rider-details"
+              render={(props) => <RiderDetails props={props} />}
+            />
+         
             <Route path="/pages" render={(props) => <Pages {...props} />} />
             <Route path="/ui" render={(props) => <Ui {...props} />} />
             <Route path="/menu" render={(props) => <Menu {...props} />} />

@@ -20,28 +20,40 @@ const data = [
         to: `/categories`,
         //     // roles: [UserRole.Admin],
       },
-      //   // {
-      //   //   icon: 'simple-icon-pie-chart',
-      //   //   label: 'menu.analytics',
-      //   //   to: `${adminRoot}/dashboards/analytics`,
-      //   //   // roles: [UserRole.Admin],
-      //   // },
-      //   // {
-      //   //   icon: 'simple-icon-basket-loaded',
-      //   //   label: 'menu.ecommerce',
-      //   //   to: `${adminRoot}/dashboards/ecommerce`,
-      //   //   // roles: [UserRole.Editor],
-      //   // },
-      //   // {
-      //   //   icon: 'simple-icon-doc',
-      //   //   label: 'menu.content',
-      //   //   to: `${adminRoot}/dashboards/content`,
-      //   //   // roles: [UserRole.Editor],
-      //   // },
     ],
   },
 
+  {
+    id:'order',
+    icon: 'iconsminds-shop-4',
+    label: 'Orders',
+    to: `${adminRoot}/dashboards`,
+
+    subs: [
+      {
+        icon: 'simple-icon-briefcase',
+        label: 'Order Details',
+        to: `/order-details`,
+      },
+    ],
+  },
+
+  {
+    id:'rider',
+    icon: 'iconsminds-shop-4',
+    label: 'Riders',
+    to: `${adminRoot}/dashboards`,
+
+    subs: [
+      {
+        icon: 'simple-icon-briefcase',
+        label: 'Rider Details',
+        to: `/rider-details`,
+      },
+    ],
+  },
   // {
+
   //   id: 'pages',
   //   icon: 'iconsminds-digital-drawing',
   //   label: 'menu.pages',
