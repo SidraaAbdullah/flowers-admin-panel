@@ -30,9 +30,9 @@ const Login = ({ history }) => {
       { email, password },
       {
         onSuccess: (res) => {
-          history.push(adminRoot);
           axios.defaults.headers.common.Authorization = `bearer ${res.data?.access_token}`;
           localStorage.setItem('User', JSON.stringify(res.data));
+          history.push(adminRoot);
         },
         onError: () => {
           alert('Username or password is wrong!');
