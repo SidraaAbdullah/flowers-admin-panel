@@ -52,10 +52,11 @@ const AddNewModal = ({
               category: undefined,
               category_id: values.category?.value,
               image: values.image,
+              quantity: values.quantity,
             };
             createItem(filtered, {
               onSuccess: async () => {
-                toggleModal();
+                // toggleModal();
                 await refetchData();
               },
             });
@@ -94,6 +95,15 @@ const AddNewModal = ({
               <Input
                 name="name"
                 value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <Label style={{ marginTop: 25 }}>
+                <IntlMessages id="pages.quantity" />
+              </Label>
+              <Input
+                name="quantity"
+                value={values.quantity}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />

@@ -216,6 +216,7 @@ module.exports = {
   'pages.image': 'Image',
   'pages.submit': 'Submit',
   'pages.delete': 'Delete',
+  'pages.quantity': 'Quantity',
   'pages.another-action': 'Another action',
   'pages.actions': 'ACTIONS',
   'pages.header': 'Header',

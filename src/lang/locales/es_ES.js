@@ -226,6 +226,7 @@ module.exports = {
   'pages.is-vegan': 'Es Vegano',
   'pages.order-status': 'Estado del Pedido',
   'pages.bake-progress': 'Progreso de Hornear',
+  'pages.quantity': 'Quantity',
   'pages.popularity': 'Popularidad',
   'pages.comments': 'Comentarios',
   'pages.error-title': 'Vaya, parece que ha ocurrido un error!',
