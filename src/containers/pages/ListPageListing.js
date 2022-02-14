@@ -23,7 +23,7 @@ const ListPageListing = ({
 }) => {
   return (
     <Row>
-      {items.map((product) => {
+      {(items || []).map((product) => {
         if (displayMode === 'imagelist') {
           return (
             <ImageListView

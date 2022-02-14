@@ -226,11 +226,13 @@ module.exports = {
   'pages.is-vegan': 'Es Vegano',
   'pages.order-status': 'Estado del Pedido',
   'pages.bake-progress': 'Progreso de Hornear',
+  'pages.quantity': 'Quantity',
   'pages.popularity': 'Popularidad',
   'pages.comments': 'Comentarios',
   'pages.error-title': 'Vaya, parece que ha ocurrido un error!',
   'pages.error-code': 'Código de error',
   'pages.go-back-home': 'REGRESAR A INICIO',
+  'pages.image': 'Image',
   'pages.mailing-info':
     'Las plantillas de correo utilizan el diseño en línea y el diseño de la tabla para mostrarse bien en varios proveedores de servicios. Para proporcionar una mejor usabilidad, lo incluimos como html regular con dangerouslySetInnerHTML.',
   'pages.invoice-info':

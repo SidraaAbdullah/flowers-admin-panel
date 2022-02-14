@@ -24,23 +24,13 @@ const AddNewModal = ({
   mutate,
   pathname,
 }) => {
-  const [image, setImage] = useState('');
   const { mutate: createItem } = useMutation(mutate);
   const { data: apiCategories } = useQuery('/category');
   const categories = (apiCategories?.data || []).map((item) => ({
     label: item.name,
     value: item._id,
   }));
-  const onImageChange = (event) => {
-    console.log(event);
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setImage(e.target.result);
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  };
+
   const { User } = getLocalStorageValues();
   return (
     <Modal
@@ -61,20 +51,22 @@ const AddNewModal = ({
               ...values,
               category: undefined,
               category_id: values.category?.value,
-              image,
+              image: values.image,
+              quantity: values.quantity,
             };
             createItem(filtered, {
               onSuccess: async () => {
+                // toggleModal();
                 await refetchData();
-                toggleModal();
               },
             });
           } else {
             const category = {
               name: values.name,
               description: values.description,
-              image,
+              image: values.image,
               created_by: User._id,
+              price: values.price,
             };
             createItem(category, {
               onSuccess: async () => {
@@ -106,6 +98,24 @@ const AddNewModal = ({
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+              <Label style={{ marginTop: 25 }}>
+                <IntlMessages id="pages.quantity" />
+              </Label>
+              <Input
+                name="quantity"
+                value={values.quantity}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <Label style={{ marginTop: 25 }}>
+                <IntlMessages id="pages.price" />
+              </Label>
+              <Input
+                name="price"
+                value={values.price}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
               <Label className="mt-4">
                 <IntlMessages id="pages.category" />
               </Label>
@@ -129,34 +139,25 @@ const AddNewModal = ({
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+              <Label style={{ marginTop: 25 }}>
+                <IntlMessages id="pages.image" />
+              </Label>
+              <Input
+                name="image"
+                value={values.image}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
               <div className="d-flex flex-column mt-3">
-                <input
-                  multiple
-                  id="openImage"
-                  type="file"
-                  onChange={onImageChange}
-                />
-                {image && (
-                  <img src={image} alt="product" width="200" height="200" />
+                {values?.image && (
+                  <img
+                    src={values?.image}
+                    alt="product"
+                    width="200"
+                    height="200"
+                  />
                 )}
               </div>
-              <Label className="mt-4">
-                <IntlMessages id="pages.status" />
-              </Label>
-              <CustomInput
-                type="radio"
-                id="onHold"
-                name="customButton"
-                label="ON HOLD"
-                onChange={(e) => setFieldValue('status', e.target.id)}
-              />
-              <CustomInput
-                type="radio"
-                id="processed"
-                name="customButton"
-                label="PROCESSED"
-                onChange={(e) => setFieldValue('status', e.target.id)}
-              />
             </ModalBody>
             <ModalFooter>
               <Button color="secondary" outline onClick={toggleModal}>

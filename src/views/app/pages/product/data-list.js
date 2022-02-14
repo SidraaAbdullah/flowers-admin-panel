@@ -35,7 +35,7 @@ const categories = [
   { label: 'Desserts', value: 'Desserts', key: 2 },
 ];
 
-const DataListPages = ({ match, pathname,  mutate }) => {
+const DataListPages = ({ match, pathname, mutate }) => {
   const [isLoaded, setIsLoaded] = useState(true);
   const [displayMode, setDisplayMode] = useState('list');
   const [currentPage, setCurrentPage] = useState(1);
@@ -60,10 +60,10 @@ const DataListPages = ({ match, pathname,  mutate }) => {
   const { refetch: refetchItems } = useQuery(`/${pathname}`, {
     refetchOnWindowFocus: true,
     onSuccess({ data }) {
-      setTotalPage(data.length);
+      setTotalPage(data?.length);
       setItems(data);
       setSelectedItems([]);
-      setTotalItemCount(data.length);
+      setTotalItemCount(data?.length);
       setIsLoaded(true);
     },
   });
