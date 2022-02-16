@@ -40,7 +40,7 @@ const ListPageHeading = ({
   toggleModal,
   heading,
 }) => {
- // const [dropdownSplitOpen, setDropdownSplitOpen] = useState(false);
+  // const [dropdownSplitOpen, setDropdownSplitOpen] = useState(false);
   const [displayOptionsIsOpen, setDisplayOptionsIsOpen] = useState(false);
   const { messages } = intl;
 
@@ -185,23 +185,25 @@ const ListPageHeading = ({
                 <IntlMessages id="pages.total" />
                 {totalItemCount}
               </span>
-              <UncontrolledDropdown className="d-inline-block">
-                <DropdownToggle caret color="outline-dark" size="xs">
-                  {selectedPageSize}
-                </DropdownToggle>
-                <DropdownMenu right>
-                  {pageSizes.map((size, index) => {
-                    return (
-                      <DropdownItem
-                        key={index}
-                        onClick={() => changePageSize(size)}
-                      >
-                        {size}
-                      </DropdownItem>
-                    );
-                  })}
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              {totalItemCount > 4 && (
+                <UncontrolledDropdown className="d-inline-block">
+                  <DropdownToggle caret color="outline-dark" size="xs">
+                    {selectedPageSize}
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    {pageSizes.map((size, index) => {
+                      return (
+                        <DropdownItem
+                          key={index}
+                          onClick={() => changePageSize(size)}
+                        >
+                          {size}
+                        </DropdownItem>
+                      );
+                    })}
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              )}
             </div>
           </Collapse>
         </div>
