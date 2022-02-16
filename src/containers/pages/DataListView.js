@@ -24,6 +24,12 @@ const DataListView = ({ product, isSelect, collect, onCheckItem }) => {
                 </p>
               </NavLink> */}
               <p className="list-item-heading mb-1 truncate">
+                <img
+                  alt="name"
+                  src={product.image || product.category_id?.image}
+                  className="mr-3"
+                  width={50}
+                />
                 {product.name || product.category_id?.name}
               </p>
               <p className="mb-1 text-muted text-small w-15 w-sm-100">

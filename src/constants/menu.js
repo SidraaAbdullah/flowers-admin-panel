@@ -10,21 +10,21 @@ const data = [
     subs: [
       {
         icon: 'simple-icon-briefcase',
-        label: 'sidebar.products',
-        to: `/products`,
+        label: 'sidebar.categories',
+        to: `/categories`,
         //     // roles: [UserRole.Admin],
       },
       {
         icon: 'simple-icon-briefcase',
-        label: 'sidebar.categories',
-        to: `/categories`,
+        label: 'sidebar.products',
+        to: `/products`,
         //     // roles: [UserRole.Admin],
       },
     ],
   },
 
   {
-    id:'order',
+    id: 'order',
     icon: 'iconsminds-shop-4',
     label: 'sidebar.orders',
     to: `${adminRoot}/dashboards`,
@@ -39,7 +39,7 @@ const data = [
   },
 
   {
-    id:'rider',
+    id: 'rider',
     icon: 'iconsminds-shop-4',
     label: 'sidebar.riders',
     to: `${adminRoot}/dashboards`,

@@ -22,7 +22,7 @@ import {
   localeOptions,
   isDarkSwitchActive,
   // buyUrl,
-  // adminRoot,
+  adminRoot,
 } from 'constants/defaultValues';
 import { MobileMenuIcon, MenuIcon } from 'components/svg';
 import { getDirection, setDirection } from 'helpers/Utils';
@@ -275,10 +275,9 @@ const TopNav = ({
           </a>
         </div> */}
       </div>
-      {/* <NavLink className="navbar-logo" to={adminRoot}>
-        <span className="logo d-none d-xs-block" />
-        <span className="logo-mobile d-block d-xs-none" />
-      </NavLink> */}
+      <NavLink className="navbar-logo" to={adminRoot}>
+        <h1 className="text-black font-weight-bold">Flowerify</h1>
+      </NavLink>
 
       <div className="navbar-right">
         {isDarkSwitchActive && <TopnavDarkSwitch />}
