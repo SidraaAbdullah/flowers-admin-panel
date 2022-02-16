@@ -9,20 +9,20 @@ import {
   DropdownItem,
   DropdownToggle,
   DropdownMenu,
-  Input,
+  // Input,
 } from 'reactstrap';
 
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import IntlMessages from 'helpers/IntlMessages';
+// import IntlMessages from 'helpers/IntlMessages';
 import {
-  menuHiddenBreakpoint,
+  // menuHiddenBreakpoint,
   searchPath,
   localeOptions,
   isDarkSwitchActive,
-  buyUrl,
-  adminRoot,
+  // buyUrl,
+  // adminRoot,
 } from 'constants/defaultValues';
 import { MobileMenuIcon, MenuIcon } from 'components/svg';
 import { getDirection, setDirection } from 'helpers/Utils';
@@ -33,12 +33,13 @@ import {
   changeLocale,
 } from 'redux/actions';
 
-import TopnavEasyAccess from './Topnav.EasyAccess';
-import TopnavNotifications from './Topnav.Notifications';
+// import TopnavEasyAccess from './Topnav.EasyAccess';
+// import TopnavNotifications from './Topnav.Notifications';
 import TopnavDarkSwitch from './Topnav.DarkSwitch';
+import { getLocalStorageValues } from '../../constants';
 
 const TopNav = ({
-  intl,
+  // intl,
   history,
   containerClassnames,
   menuClickCount,
@@ -79,32 +80,32 @@ const TopNav = ({
     );
   };
 
-  const handleSearchIconClick = (e) => {
-    if (window.innerWidth < menuHiddenBreakpoint) {
-      let elem = e.target;
-      if (!e.target.classList.contains('search')) {
-        if (e.target.parentElement.classList.contains('search')) {
-          elem = e.target.parentElement;
-        } else if (
-          e.target.parentElement.parentElement.classList.contains('search')
-        ) {
-          elem = e.target.parentElement.parentElement;
-        }
-      }
+  // const handleSearchIconClick = (e) => {
+  //   if (window.innerWidth < menuHiddenBreakpoint) {
+  //     let elem = e.target;
+  //     if (!e.target.classList.contains('search')) {
+  //       if (e.target.parentElement.classList.contains('search')) {
+  //         elem = e.target.parentElement;
+  //       } else if (
+  //         e.target.parentElement.parentElement.classList.contains('search')
+  //       ) {
+  //         elem = e.target.parentElement.parentElement;
+  //       }
+  //     }
 
-      if (elem.classList.contains('mobile-view')) {
-        search();
-        elem.classList.remove('mobile-view');
-        removeEventsSearch();
-      } else {
-        elem.classList.add('mobile-view');
-        addEventsSearch();
-      }
-    } else {
-      search();
-    }
-    e.stopPropagation();
-  };
+  //     if (elem.classList.contains('mobile-view')) {
+  //       search();
+  //       elem.classList.remove('mobile-view');
+  //       removeEventsSearch();
+  //     } else {
+  //       elem.classList.add('mobile-view');
+  //       addEventsSearch();
+  //     }
+  //   } else {
+  //     search();
+  //   }
+  //   e.stopPropagation();
+  // };
 
   const handleDocumentClickSearch = (e) => {
     let isSearchClick = false;
@@ -138,15 +139,15 @@ const TopNav = ({
     document.removeEventListener('click', handleDocumentClickSearch, true);
   };
 
-  const addEventsSearch = () => {
-    document.addEventListener('click', handleDocumentClickSearch, true);
-  };
+  // const addEventsSearch = () => {
+  //   document.addEventListener('click', handleDocumentClickSearch, true);
+  // };
 
-  const handleSearchInputKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      search();
-    }
-  };
+  // const handleSearchInputKeyPress = (e) => {
+  //   if (e.key === 'Enter') {
+  //     search();
+  //   }
+  // };
 
   const toggleFullScreen = () => {
     const isFS = isInFullScreenFn();
@@ -199,7 +200,8 @@ const TopNav = ({
     clickOnMobileMenuAction(_containerClassnames);
   };
 
-  const { messages } = intl;
+  // const { messages } = intl;
+  const { User } = getLocalStorageValues();
   return (
     <nav className="navbar fixed-top">
       <div className="d-flex align-items-center navbar-left">
@@ -222,7 +224,7 @@ const TopNav = ({
           <MobileMenuIcon />
         </NavLink>
 
-        <div className="search">
+        {/* <div className="search">
           <Input
             name="searchKeyword"
             id="searchKeyword"
@@ -237,7 +239,7 @@ const TopNav = ({
           >
             <i className="simple-icon-magnifier" />
           </span>
-        </div>
+        </div> */}
 
         <div className="d-inline-block">
           <UncontrolledDropdown className="ml-2">
@@ -263,7 +265,7 @@ const TopNav = ({
             </DropdownMenu>
           </UncontrolledDropdown>
         </div>
-        <div className="position-relative d-none d-none d-lg-inline-block">
+        {/* <div className="position-relative d-none d-none d-lg-inline-block">
           <a
             className="btn btn-outline-primary btn-sm ml-2"
             target="_top"
@@ -271,18 +273,18 @@ const TopNav = ({
           >
             <IntlMessages id="user.buy" />
           </a>
-        </div>
+        </div> */}
       </div>
-      <NavLink className="navbar-logo" to={adminRoot}>
+      {/* <NavLink className="navbar-logo" to={adminRoot}>
         <span className="logo d-none d-xs-block" />
         <span className="logo-mobile d-block d-xs-none" />
-      </NavLink>
+      </NavLink> */}
 
       <div className="navbar-right">
         {isDarkSwitchActive && <TopnavDarkSwitch />}
         <div className="header-icons d-inline-block align-middle">
-          <TopnavEasyAccess />
-          <TopnavNotifications />
+          {/* <TopnavEasyAccess />
+          <TopnavNotifications /> */}
           <button
             className="header-icon btn btn-empty d-none d-sm-inline-block"
             type="button"
@@ -299,22 +301,22 @@ const TopNav = ({
         <div className="user d-inline-block">
           <UncontrolledDropdown className="dropdown-menu-right">
             <DropdownToggle className="p-0" color="empty">
-              <span className="name mr-1">Sarah Kortney</span>
+              <span className="name mr-1">{User?.name}</span>
               <span>
                 <img alt="Profile" src="/assets/img/profiles/l-1.jpg" />
               </span>
             </DropdownToggle>
             <DropdownMenu className="mt-3" right>
-              <Link to="/user/login">
+              {/* <Link to="/user/login">
                 <DropdownItem>Login</DropdownItem>
-              </Link>
+              </Link> */}
               <Link to="/user/register">
                 <DropdownItem>Register</DropdownItem>
               </Link>
-              <DropdownItem>Features</DropdownItem>
+              {/* <DropdownItem>Features</DropdownItem>
               <DropdownItem>History</DropdownItem>
-              <DropdownItem>Support</DropdownItem>
-              <DropdownItem divider />
+              <DropdownItem>Support</DropdownItem> */}
+              {/* <DropdownItem divider /> */}
               <DropdownItem onClick={() => handleLogout()}>
                 Sign out
               </DropdownItem>

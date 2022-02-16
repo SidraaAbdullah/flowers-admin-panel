@@ -1,11 +1,12 @@
 import React from 'react';
 import { Card, CustomInput, Badge } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 import { ContextMenuTrigger } from 'react-contextmenu';
 import { Colxx } from 'components/common/CustomBootstrap';
 
 const DataListView = ({ product, isSelect, collect, onCheckItem }) => {
+  console.log(product);
   return (
     <Colxx xxs="12" className="mb-3">
       <ContextMenuTrigger id="menu_id" data={product._id} collect={collect}>
@@ -17,22 +18,35 @@ const DataListView = ({ product, isSelect, collect, onCheckItem }) => {
         >
           <div className="pl-2 d-flex flex-grow-1 min-width-zero">
             <div className="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
-              <NavLink to={`?p=${product.id}`} className="w-40 w-sm-100">
+              {/* <NavLink to={`?p=${product.id}`} className="w-40 w-sm-100">
                 <p className="list-item-heading mb-1 truncate">
                   {product.name}
                 </p>
-              </NavLink>
-              <p className="mb-1 text-muted text-small w-15 w-sm-100">
-                {product.category_id?.name}
+              </NavLink> */}
+              <p className="list-item-heading mb-1 truncate">
+                {product.name || product.category_id?.name}
               </p>
+              <p className="mb-1 text-muted text-small w-15 w-sm-100">
+                {product.description}
+              </p>
+              {product.price && (
+                <p className="mb-1 text-muted text-small w-15 w-sm-100">
+                  Price: Rs. {product.price}
+                </p>
+              )}
+
               <p className="mb-1 text-muted text-small w-15 w-sm-100">
                 {product.createdAt}
               </p>
-              <div className="w-15 w-sm-100">
-                <Badge color={product.statusColor} pill>
-                  {product.status}
-                </Badge>
-              </div>
+              {product.status ? (
+                <div className="w-15 w-sm-100">
+                  <Badge color={product.statusColor} pill>
+                    {product.status}
+                  </Badge>
+                </div>
+              ) : (
+                <div className="w-5" />
+              )}
             </div>
             <div className="custom-control custom-checkbox pl-1 align-self-center pr-4">
               <CustomInput

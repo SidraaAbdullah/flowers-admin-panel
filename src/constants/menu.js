@@ -4,19 +4,19 @@ const data = [
   {
     id: 'stock',
     icon: 'iconsminds-shop-4',
-    label: 'Stock',
+    label: 'sidebar.stock',
     to: `${adminRoot}/dashboards`,
     // roles: [UserRole.Admin, UserRole.Editor],
     subs: [
       {
         icon: 'simple-icon-briefcase',
-        label: 'Products',
+        label: 'sidebar.products',
         to: `/products`,
         //     // roles: [UserRole.Admin],
       },
       {
         icon: 'simple-icon-briefcase',
-        label: 'Categories',
+        label: 'sidebar.categories',
         to: `/categories`,
         //     // roles: [UserRole.Admin],
       },
@@ -26,13 +26,13 @@ const data = [
   {
     id:'order',
     icon: 'iconsminds-shop-4',
-    label: 'Orders',
+    label: 'sidebar.orders',
     to: `${adminRoot}/dashboards`,
 
     subs: [
       {
         icon: 'simple-icon-briefcase',
-        label: 'Order Details',
+        label: 'sidebar.orderDetails',
         to: `/order-details`,
       },
     ],
@@ -41,13 +41,13 @@ const data = [
   {
     id:'rider',
     icon: 'iconsminds-shop-4',
-    label: 'Riders',
+    label: 'sidebar.riders',
     to: `${adminRoot}/dashboards`,
 
     subs: [
       {
         icon: 'simple-icon-briefcase',
-        label: 'Rider Details',
+        label: 'sidebar.riderDetails',
         to: `/rider-details`,
       },
     ],

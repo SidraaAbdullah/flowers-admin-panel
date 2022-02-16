@@ -1,14 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Row } from 'reactstrap';
-import { Colxx } from 'components/common/CustomBootstrap';
+// import { NavLink } from 'react-router-dom';
+// import { Row } from 'reactstrap';
+// import { Colxx } from 'components/common/CustomBootstrap';
 
 const Footer = () => {
   return (
     <footer className="page-footer">
       <div className="footer-content">
-        <div className="container-fluid">
-          <Row>
+        <div className="container-fluid d-flex justify-content-center">
+          Copyrights © All Rights Reserved by Flowerify.
+          {/* <Row>
             <Colxx xxs="12" sm="6">
               <p className="mb-0 text-muted">ColoredStrategies 2021</p>
             </Colxx>
@@ -31,7 +32,7 @@ const Footer = () => {
                 </li>
               </ul>
             </Colxx>
-          </Row>
+          </Row> */}
         </div>
       </div>
     </footer>

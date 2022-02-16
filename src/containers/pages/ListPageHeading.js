@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import {
   Row,
   Button,
-  ButtonDropdown,
+  // ButtonDropdown,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
-  CustomInput,
+  // CustomInput,
   Collapse,
 } from 'reactstrap';
 import { injectIntl } from 'react-intl';
@@ -16,31 +16,31 @@ import { injectIntl } from 'react-intl';
 import { Colxx, Separator } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 
-import { DataListIcon, ThumbListIcon, ImageListIcon } from 'components/svg';
-import Breadcrumb from '../navs/Breadcrumb';
+// import { DataListIcon, ThumbListIcon, ImageListIcon } from 'components/svg';
+// import Breadcrumb from '../navs/Breadcrumb';
 
 const ListPageHeading = ({
   intl,
-  displayMode,
-  changeDisplayMode,
-  handleChangeSelectAll,
-  changeOrderBy,
+  // displayMode,
+  // changeDisplayMode,
+  // handleChangeSelectAll,
+  // changeOrderBy,
   changePageSize,
   selectedPageSize,
   totalItemCount,
-  selectedOrderOption,
-  match,
+  // selectedOrderOption,
+  // match,
   startIndex,
   endIndex,
-  selectedItemsLength,
-  itemsLength,
+  // selectedItemsLength,
+  // itemsLength,
   onSearchKey,
-  orderOptions,
+  // orderOptions,
   pageSizes,
   toggleModal,
   heading,
 }) => {
-  const [dropdownSplitOpen, setDropdownSplitOpen] = useState(false);
+ // const [dropdownSplitOpen, setDropdownSplitOpen] = useState(false);
   const [displayOptionsIsOpen, setDisplayOptionsIsOpen] = useState(false);
   const { messages } = intl;
 
@@ -62,7 +62,7 @@ const ListPageHeading = ({
               <IntlMessages id="pages.add-new" />
             </Button>
             {'  '}
-            <ButtonDropdown
+            {/* <ButtonDropdown
               isOpen={dropdownSplitOpen}
               toggle={() => setDropdownSplitOpen(!dropdownSplitOpen)}
             >
@@ -98,9 +98,9 @@ const ListPageHeading = ({
                   <IntlMessages id="pages.another-action" />
                 </DropdownItem>
               </DropdownMenu>
-            </ButtonDropdown>
+            </ButtonDropdown> */}
           </div>
-          <Breadcrumb match={match} />
+          {/* <Breadcrumb match={match} /> */}
         </div>
 
         <div className="mb-2">
@@ -117,7 +117,7 @@ const ListPageHeading = ({
             className="d-md-block"
             id="displayOptions"
           >
-            <span className="mr-3 d-inline-block float-md-left">
+            {/* <span className="mr-3 d-inline-block float-md-left">
               <a
                 href="#/"
                 className={`mr-2 view-icon ${
@@ -145,10 +145,10 @@ const ListPageHeading = ({
               >
                 <ImageListIcon />
               </a>
-            </span>
+            </span> */}
 
             <div className="d-block d-md-inline-block pt-1">
-              <UncontrolledDropdown className="mr-1 float-md-left btn-group mb-1">
+              {/* <UncontrolledDropdown className="mr-1 float-md-left btn-group mb-1">
                 <DropdownToggle caret color="outline-dark" size="xs">
                   <IntlMessages id="pages.orderby" />
                   {selectedOrderOption.label}
@@ -165,7 +165,7 @@ const ListPageHeading = ({
                     );
                   })}
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
               <div className="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
                 <input
                   type="text"

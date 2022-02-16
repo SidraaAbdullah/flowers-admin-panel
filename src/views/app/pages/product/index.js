@@ -4,24 +4,28 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 const DataList = React.lazy(() =>
   import(/* webpackChunkName: "product-data-list" */ './data-list')
 );
-const ImageList = React.lazy(() =>
-  import(/* webpackChunkName: "product-image-list" */ './image-list')
-);
-const ThumbList = React.lazy(() =>
-  import(/* webpackChunkName: "product-thumb-list" */ './thumb-list')
-);
-const Details = React.lazy(() =>
-  import(/* webpackChunkName: "product-details" */ './details')
-);
-const DetailsAlt = React.lazy(() =>
-  import(/* webpackChunkName: "product-details-alt" */ './details-alt')
-);
+// const ImageList = React.lazy(() =>
+//   import(/* webpackChunkName: "product-image-list" */ './image-list')
+// );
+// const ThumbList = React.lazy(() =>
+//   import(/* webpackChunkName: "product-thumb-list" */ './thumb-list')
+// );
+// const Details = React.lazy(() =>
+//   import(/* webpackChunkName: "product-details" */ './details')
+// );
+// const DetailsAlt = React.lazy(() =>
+//   import(/* webpackChunkName: "product-details-alt" */ './details-alt')
+// );
 
 const PagesProduct = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>
     <Switch>
       <Redirect exact from={`${match.url}/`} to={`${match.url}/data-list`} />
       <Route
+        path={`${match.url}/data-list`}
+        render={(props) => <DataList {...props} />}
+      />
+      {/* <Route
         path={`${match.url}/data-list`}
         render={(props) => <DataList {...props} />}
       />
@@ -41,7 +45,7 @@ const PagesProduct = ({ match }) => (
         path={`${match.url}/details-alt`}
         render={(props) => <DetailsAlt {...props} />}
       />
-      <Redirect to="/error" />
+      <Redirect to="/error" /> */}
     </Switch>
   </Suspense>
 );
