@@ -53,9 +53,9 @@ const Register = ({ history }) => {
             </p>
           </div>
           <div className="form-side">
-            <NavLink to="/" className="white">
+            {/* <NavLink to="/" className="white">
               <span className="logo-single" />
-            </NavLink>
+            </NavLink> */}
             <CardTitle className="mb-4">
               <IntlMessages id="user.register" />
             </CardTitle>
