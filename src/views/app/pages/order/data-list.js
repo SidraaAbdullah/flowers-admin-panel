@@ -5,9 +5,9 @@ import axios from 'axios';
 
 import { servicePath } from 'constants/defaultValues';
 
-import ListPageHeading from 'containers/pages/ListPageHeading';
+import ListPageHeading from 'containers/pages/OrderListPageHeading';
 import AddNewModal from 'containers/pages/AddNewModal';
-import ListPageListing from 'containers/pages/ListPageListing';
+import ListPageListing from 'containers/pages/OrderListPageListing';
 import useMousetrap from 'hooks/use-mousetrap';
 import { useQuery } from 'react-query';
 
@@ -171,9 +171,7 @@ const DataListPages = ({ match, pathname, mutate }) => {
     <>
       <div className="disable-text-selection">
         <ListPageHeading
-          heading={
-            pathname === 'category' ? 'menu.category-list' : 'menu.product-list'
-          }
+          heading="menu.order-list"
           displayMode={displayMode}
           changeDisplayMode={setDisplayMode}
           handleChangeSelectAll={handleChangeSelectAll}

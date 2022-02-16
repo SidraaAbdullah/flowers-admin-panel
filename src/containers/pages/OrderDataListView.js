@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { ContextMenuTrigger } from 'react-contextmenu';
 import { Colxx } from 'components/common/CustomBootstrap';
 
-const DataListView = ({ product, isSelect, collect, onCheckItem }) => {
+const OrderDataListView = ({ product, isSelect, collect, onCheckItem }) => {
   return (
     <Colxx xxs="12" className="mb-3">
       <ContextMenuTrigger id="menu_id" data={product._id} collect={collect}>
@@ -71,4 +71,4 @@ const DataListView = ({ product, isSelect, collect, onCheckItem }) => {
 };
 
 /* React.memo detail : https://reactjs.org/docs/react-api.html#reactpurecomponent  */
-export default React.memo(DataListView);
+export default React.memo(OrderDataListView);
