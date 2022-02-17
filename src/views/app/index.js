@@ -37,7 +37,7 @@ const App = () => {
       <div className="dashboard-wrapper">
         <Suspense fallback={<div className="loading" />}>
           <Switch>
-            <Redirect exact from="/" to="/dashboards" />
+            <Redirect exact from="/" to="/categories" />
             <Route
               path="/dashboards"
               render={(props) => <Dashboards {...props} />}
