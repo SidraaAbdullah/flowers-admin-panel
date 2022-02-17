@@ -14,7 +14,7 @@ import { injectIntl } from 'react-intl';
 import { Colxx, Separator } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 
-const OrderListPageHeading = ({
+const RiderListPageHeading = ({
   intl,
   changePageSize,
   selectedPageSize,
@@ -98,4 +98,4 @@ const OrderListPageHeading = ({
   );
 };
 
-export default injectIntl(OrderListPageHeading);
+export default injectIntl(RiderListPageHeading);

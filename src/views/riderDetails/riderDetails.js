@@ -3,14 +3,14 @@ import React from 'react';
 
 const DataList = React.lazy(() =>
   import(
-    /* webpackChunkName: "product-data-list" */ '../app/pages/product/data-list'
+    /* webpackChunkName: "product-data-list" */ '../app/pages/rider/data-list'
   )
 );
-const RiderDetails = ({props}) => {
+const RiderDetails = ({ props }) => {
   return (
-      <div>
-          <DataList pathname='rider-detail' {...props} />;
-      </div>
+    <div>
+      <DataList {...props} />;
+    </div>
   );
 };
 

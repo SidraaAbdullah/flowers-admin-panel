@@ -70,6 +70,7 @@ module.exports = {
   'menu.pages': 'Pages',
   'menu.product-list': 'Product List',
   'menu.order-list': 'Order List',
+  'menu.rider-list': 'Rider List',
   'menu.category-list': 'Category List',
   'menu.thumb-list': 'Thumb List',
   'menu.image-list': 'Image List',

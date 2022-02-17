@@ -77,6 +77,7 @@ module.exports = {
   'menu.pages': 'Páginas',
   'menu.product-list': 'Lista de productos',
   'menu.order-list': 'Lista de orden',
+  'menu.rider-list': 'Lista de jinete',
   'menu.category-list': 'Lista de categoría',
   'menu.thumb-list': 'Lista Pulgares',
   'menu.image-list': 'Lista Imagen',

@@ -2,13 +2,13 @@ import React from 'react';
 import { Row } from 'reactstrap';
 import Pagination from './Pagination';
 import ContextMenuContainer from './ContextMenuContainer';
-import DataListView from './OrderDataListView';
+import DataListView from './RiderDataListView';
 
 function collect(props) {
   return { data: props.data };
 }
 
-const OrderListPageListing = ({
+const RiderListPageListing = ({
   items,
   selectedItems,
   onCheckItem,
@@ -20,12 +20,12 @@ const OrderListPageListing = ({
 }) => {
   return (
     <Row>
-      {(items || []).map((order) => {
+      {(items || []).map((rider) => {
         return (
           <DataListView
-            key={order.__id}
-            order={order}
-            isSelect={selectedItems.includes(order._id)}
+            key={rider.__id}
+            rider={rider}
+            isSelect={selectedItems.includes(rider._id)}
             onCheckItem={onCheckItem}
             collect={collect}
           />
@@ -44,4 +44,4 @@ const OrderListPageListing = ({
   );
 };
 
-export default React.memo(OrderListPageListing);
+export default React.memo(RiderListPageListing);

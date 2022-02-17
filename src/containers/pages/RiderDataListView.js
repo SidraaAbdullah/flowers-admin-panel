@@ -4,12 +4,12 @@ import classnames from 'classnames';
 import { ContextMenuTrigger } from 'react-contextmenu';
 import { Colxx } from 'components/common/CustomBootstrap';
 
-const OrderDataListView = ({ order, isSelect, collect, onCheckItem }) => {
+const RiderDataListView = ({ rider, isSelect, collect, onCheckItem }) => {
   return (
     <Colxx xxs="12" className="mb-3">
-      <ContextMenuTrigger id="menu_id" data={order._id} collect={collect}>
+      <ContextMenuTrigger id="menu_id" data={rider._id} collect={collect}>
         <Card
-          onClick={(event) => onCheckItem(event, order._id)}
+          onClick={(event) => onCheckItem(event, rider._id)}
           className={classnames('d-flex flex-row', {
             active: isSelect,
           })}
@@ -17,18 +17,18 @@ const OrderDataListView = ({ order, isSelect, collect, onCheckItem }) => {
           <div className="pl-2 d-flex flex-grow-1 min-width-zero">
             <div className="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
               <p className="list-item-heading mb-1 w-15 w-sm-100 truncate">
-                {order.uid}
+                {rider.uid}
               </p>
               <p className="mb-1 text-muted text-small w-15 w-sm-100">
-                Delivery charges: Rs. {order.delivery_charges}
+                Delivery charges: Rs. {rider.delivery_charges}
               </p>
 
               <p className="mb-1 text-muted text-small w-15 w-sm-100">
-                {order.createdAt}
+                {rider.createdAt}
               </p>
               <div className="w-15 w-sm-100">
-                <Badge color={order.statusColor} pill>
-                  {order.status}
+                <Badge color={rider.statusColor} pill>
+                  {rider.status}
                 </Badge>
               </div>
             </div>
@@ -36,7 +36,7 @@ const OrderDataListView = ({ order, isSelect, collect, onCheckItem }) => {
               <CustomInput
                 className="item-check mb-0"
                 type="checkbox"
-                id={`check_${order._id}`}
+                id={`check_${rider._id}`}
                 checked={isSelect}
                 onChange={() => {}}
                 label=""
@@ -50,4 +50,4 @@ const OrderDataListView = ({ order, isSelect, collect, onCheckItem }) => {
 };
 
 /* React.memo detail : https://reactjs.org/docs/react-api.html#reactpurecomponent  */
-export default React.memo(OrderDataListView);
+export default React.memo(RiderDataListView);
