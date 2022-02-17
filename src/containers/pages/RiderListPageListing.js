@@ -17,6 +17,7 @@ const RiderListPageListing = ({
   onContextMenuClick,
   onContextMenu,
   onChangePage,
+  refetchProducts,
 }) => {
   return (
     <Row>
@@ -28,6 +29,7 @@ const RiderListPageListing = ({
             isSelect={selectedItems.includes(rider._id)}
             onCheckItem={onCheckItem}
             collect={collect}
+            refetch={refetchProducts}
           />
         );
       })}

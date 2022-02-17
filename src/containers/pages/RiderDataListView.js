@@ -4,8 +4,21 @@ import classnames from 'classnames';
 import { ContextMenuTrigger } from 'react-contextmenu';
 import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
+import { useMutation } from 'react-query';
+import { RIDER_APPROVAL } from 'queries';
 
-const RiderDataListView = ({ rider, isSelect, collect }) => {
+const RiderDataListView = ({ rider, isSelect, collect, refetch }) => {
+  const { mutate: driverApprove } = useMutation(RIDER_APPROVAL);
+  const handleSubmit = async (id) => {
+    await driverApprove(
+      { driver_id: id },
+      {
+        onSuccess: () => {
+          refetch();
+        },
+      }
+    );
+  };
   return (
     <Colxx xxs="12" className="mb-3">
       <ContextMenuTrigger id="menu_id" data={rider._id} collect={collect}>
@@ -28,18 +41,18 @@ const RiderDataListView = ({ rider, isSelect, collect }) => {
                 Phone Number: <br /> {rider.phone_number}
               </p>
 
-              <div className="w-25 w-sm-100">
+              <div className="w-20 w-sm-100">
                 {rider.status === 'ACTIVE' ? (
                   <Badge color={rider.statusColor} pill>
                     {rider.status}
                   </Badge>
                 ) : (
                   <>
-                    <Button className='mr-2' color="primary">
-                      <IntlMessages id="Approve" />
-                    </Button>
-                    <Button color="secondary">
-                      <IntlMessages id="Cancel" />
+                    <Button color="primary">
+                      <IntlMessages
+                        id="Approve"
+                        onClick={handleSubmit(rider._id)}
+                      />
                     </Button>
                   </>
                 )}

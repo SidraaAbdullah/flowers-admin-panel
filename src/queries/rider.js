@@ -7,3 +7,8 @@ export const RIDER = async () => {
   });
   return res.data;
 };
+
+export const RIDER_APPROVAL = async (e) => {
+  const res = await axios.put(`${BASE_URL}/driver/approve`, e);
+  return res.data;
+};
