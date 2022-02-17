@@ -51,7 +51,7 @@ const RiderDataListView = ({ rider, isSelect, collect, refetch }) => {
                     <Button color="primary">
                       <IntlMessages
                         id="Approve"
-                        onClick={handleSubmit(rider._id)}
+                        onClick={() => handleSubmit(rider._id)}
                       />
                     </Button>
                   </>
