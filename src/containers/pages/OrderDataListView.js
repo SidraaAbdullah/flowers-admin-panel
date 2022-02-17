@@ -22,23 +22,23 @@ const OrderDataListView = ({ product, isSelect, collect, onCheckItem }) => {
                   {product.name}
                 </p>
               </NavLink> */}
-              <p className="list-item-heading mb-1 truncate">
-                <img
+              <p className="list-item-heading mb-1 w-15 w-sm-100 truncate">
+                {/* <img
                   alt="name"
                   src={product.image || product.category_id?.image}
                   className="mr-3"
                   width={50}
-                />
-                {product.name || product.category_id?.name}
+                /> */}
+                {product.uid}
               </p>
+              {/* <p className="mb-1 text-muted text-small w-15 w-sm-100">
+                Review:
+                <br /> {product.comment}
+              </p> */}
+
               <p className="mb-1 text-muted text-small w-15 w-sm-100">
-                {product.description}
+                Delivery charges: Rs. {product.delivery_charges}
               </p>
-              {product.price && (
-                <p className="mb-1 text-muted text-small w-15 w-sm-100">
-                  Price: Rs. {product.price}
-                </p>
-              )}
 
               <p className="mb-1 text-muted text-small w-15 w-sm-100">
                 {product.createdAt}

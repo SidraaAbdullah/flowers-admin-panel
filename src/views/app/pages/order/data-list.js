@@ -10,6 +10,7 @@ import AddNewModal from 'containers/pages/AddNewModal';
 import ListPageListing from 'containers/pages/OrderListPageListing';
 import useMousetrap from 'hooks/use-mousetrap';
 import { useQuery } from 'react-query';
+import { ORDER } from 'queries';
 
 const getIndex = (value, arr, prop) => {
   for (let i = 0; i < arr.length; i += 1) {
@@ -57,7 +58,7 @@ const DataListPages = ({ match, pathname, mutate }) => {
     setCurrentPage(1);
   }, [selectedPageSize, selectedOrderOption]);
 
-  const { refetch: refetchItems } = useQuery(`/${pathname}`, {
+  const { refetch: refetchItems } = useQuery('ORDER', ORDER, {
     refetchOnWindowFocus: true,
     onSuccess({ data }) {
       setTotalPage(data?.length);
