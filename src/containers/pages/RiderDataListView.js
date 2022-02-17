@@ -17,14 +17,15 @@ const RiderDataListView = ({ rider, isSelect, collect, onCheckItem }) => {
           <div className="pl-2 d-flex flex-grow-1 min-width-zero">
             <div className="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
               <p className="list-item-heading mb-1 w-15 w-sm-100 truncate">
-                {rider.uid}
+                {rider.name}
+              </p>
+              <p className="list-item-heading mb-1 w-15 w-sm-100 truncate">
+                {rider.availableForDelivery
+                  ? 'Available for delivery'
+                  : 'Not Available for delivery'}
               </p>
               <p className="mb-1 text-muted text-small w-15 w-sm-100">
-                Delivery charges: Rs. {rider.delivery_charges}
-              </p>
-
-              <p className="mb-1 text-muted text-small w-15 w-sm-100">
-                {rider.createdAt}
+                Phone Number: <br /> {rider.phone_number}
               </p>
               <div className="w-15 w-sm-100">
                 <Badge color={rider.statusColor} pill>
@@ -32,6 +33,7 @@ const RiderDataListView = ({ rider, isSelect, collect, onCheckItem }) => {
                 </Badge>
               </div>
             </div>
+
             <div className="custom-control custom-checkbox pl-1 align-self-center pr-4">
               <CustomInput
                 className="item-check mb-0"

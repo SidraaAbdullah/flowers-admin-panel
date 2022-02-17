@@ -57,6 +57,7 @@ const DataListPages = ({ match, pathname, mutate }) => {
   const { refetch: refetchItems } = useQuery('RIDER', RIDER, {
     refetchOnWindowFocus: true,
     onSuccess({ data }) {
+      console.log(data);
       setTotalPage(data?.length);
       setItems(data);
       setSelectedItems([]);
