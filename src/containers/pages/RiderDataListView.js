@@ -48,11 +48,11 @@ const RiderDataListView = ({ rider, isSelect, collect, refetch }) => {
                   </Badge>
                 ) : (
                   <>
-                    <Button color="primary">
-                      <IntlMessages
-                        id="Approve"
-                        onClick={() => handleSubmit(rider._id)}
-                      />
+                    <Button
+                      color="primary"
+                      onClick={() => handleSubmit(rider._id)}
+                    >
+                      <IntlMessages id="Approve" />
                     </Button>
                   </>
                 )}
